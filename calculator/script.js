@@ -1,17 +1,29 @@
-function appendValue(value) {
-    const display = document.getElementById('display');
-    display.value += value;
-}
+const display = document.getElementById('display');
 
 function clearDisplay() {
-    document.getElementById('display').value = '';
+    display.textContent = '0';
 }
 
-function calculate() {
-    const display = document.getElementById('display');
+function deleteLastChar() {
+    if (display.textContent.length === 1) {
+        display.textContent = '0';
+    } else {
+        display.textContent = display.textContent.slice(0, -1);
+    }
+}
+
+function appendValue(value) {
+    if (display.textContent === '0') {
+        display.textContent = value;
+    } else {
+        display.textContent += value;
+    }
+}
+
+function calculateResult() {
     try {
-        display.value = eval(display.value) || '';
+        display.textContent = eval(display.textContent);
     } catch (error) {
-        display.value = 'Error';
+        display.textContent = 'Error';
     }
 }
