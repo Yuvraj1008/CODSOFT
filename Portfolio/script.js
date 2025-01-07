@@ -23,3 +23,23 @@ document.getElementById('recommend_btn').addEventListener('click', function () {
 function showPopup(isVisible) {
     document.getElementById('popup').style.display = isVisible ? 'block' : 'none';
 }
+
+const scrollToTopButton = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', () => {
+    console.log('ScrollY:', window.scrollY); // Debugging: Log scroll position
+    if (window.scrollY > 300) {
+        scrollToTopButton.style.display = 'block'; // Show button when scrolled down
+    } else {
+        scrollToTopButton.style.display = 'none'; // Hide button when at the top
+    }
+});
+
+scrollToTopButton.addEventListener('click', () => {
+    console.log('Scroll-to-Top button clicked'); // Debugging: Log click event
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
