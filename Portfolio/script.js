@@ -1,45 +1,35 @@
-document.getElementById('recommend_btn').addEventListener('click', function () {
-    const name = document.getElementById('name').value;
-    const recommendationText = document.getElementById('new_recommendation').value;
-
-    if (recommendationText.trim() === "") {
-        alert("Please enter a recommendation.");
-        return;
-    }
-
+document.addEventListener('DOMContentLoaded', () => {
+    const recommendBtn = document.getElementById('recommend_btn');
+    const recommendationInput = document.getElementById('new_recommendation');
     const recommendationContainer = document.getElementById('all_recommendations');
-    const newRecommendation = document.createElement('div');
-    newRecommendation.className = 'recommendation';
-    newRecommendation.innerHTML = `<span>&#8220;</span>${name ? name + ': ' : ''}${recommendationText}<span>&#8221;</span>`;
-    
-    recommendationContainer.appendChild(newRecommendation);
-    
-    document.getElementById('new_recommendation').value = '';
-    document.getElementById('name').value = '';
-    
-    showPopup(true);
-});
+    const popup = document.getElementById('popup');
 
-function showPopup(isVisible) {
-    document.getElementById('popup').style.display = isVisible ? 'block' : 'none';
-}
+    recommendBtn.addEventListener('click', () => {
+        const recommendationText = recommendationInput.value.trim();
 
-const scrollToTopButton = document.getElementById('scrollToTop');
+        if (recommendationText === "") {
+            alert("Please enter a recommendation.");
+            return;
+        }
 
-window.addEventListener('scroll', () => {
-    console.log('ScrollY:', window.scrollY); // Debugging: Log scroll position
-    if (window.scrollY > 300) {
-        scrollToTopButton.style.display = 'block'; // Show button when scrolled down
-    } else {
-        scrollToTopButton.style.display = 'none'; // Hide button when at the top
+        const newRecommendation = document.createElement('div');
+        newRecommendation.className = 'recommendation';
+        newRecommendation.innerHTML = `
+            <span aria-hidden="true">&#8220;</span>
+            ${recommendationText}
+            <span aria-hidden="true">&#8221;</span>
+        `;
+
+        recommendationContainer.appendChild(newRecommendation);
+        recommendationInput.value = '';
+
+        showPopup();
+    });
+
+    function showPopup() {
+        popup.style.display = 'block';
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 3000);
     }
 });
-
-scrollToTopButton.addEventListener('click', () => {
-    console.log('Scroll-to-Top button clicked'); // Debugging: Log click event
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
