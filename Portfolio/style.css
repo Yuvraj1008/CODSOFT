@@ -11,6 +11,13 @@
     border-radius: 50%;
 }
 
+.navbar{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    
+}
+
 .navbar-toggler {
     background-color: #495057; /* Lighter shade of dark gray */
     border: none;
@@ -62,6 +69,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .about-content {
@@ -105,7 +113,7 @@
 .profile-img img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -146,6 +154,7 @@
 .projects h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .projects-container {
@@ -222,6 +231,7 @@ body {
     font-size: 2.5rem;
     color: #007bff;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 
@@ -270,6 +280,10 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+.skill{
+    margin-top: 20px;
+    font-size: 2.5rem;
+}
 
 button {
     padding: 10px 15px;
